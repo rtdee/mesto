@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto Russia</title>
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/header-logo.svg" alt="лого">
+    </header>
+    <div class="popup">
+      <form class="popup__container">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input type="text" id="popup__profile-name">
+        <input type="text" id="popup__profile-title">
+        <button class="popup__save-button">Сохранить</button>
+      </form>
+    </div>
+    <section class="profile">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
+      <div class="profile-info">
+        <h1 class="profile-info__name">Жак-Ив Кусто</h1>
+        <p class="profile-info__title">Исследователь океана</p>
+        <button class="profile-info__edit-button"></button>
+      </div>
+      <button class="profile__add-button"></button>
+    </section>
+    <section class="elements" aria-label="фотосекция">
+      <div class="element">
+        <img class="element__photo" src="./images/newyork.jpg" alt="Нью-Йорк">
+        <p class="element__text">Нью-Йорк</p>
+        <button class="element__like-button"></button>
+      </div>
+      <div class="element">
+        <img class="element__photo" src="./images/london.jpg" alt="Лондон">
+        <p class="element__text">Лондон</p>
+        <button class="element__like-button"></button>
+      </div>
+      <div class="element">
+        <img class="element__photo" src="./images/paris.jpg" alt="Париж">
+        <p class="element__text">Париж</p>
+        <button class="element__like-button"></button>
+      </div>
+      <div class="element">
+        <img class="element__photo" src="./images/moscow.jpg" alt="Москва">
+        <p class="element__text">Москва</p>
+        <button class="element__like-button"></button>
+      </div>
+      <div class="element">
+        <img class="element__photo" src="./images/shanghai.jpg" alt="Шанхай">
+        <p class="element__text">Шанхай</p>
+        <button class="element__like-button"></button>
+      </div>
+      <div class="element">
+        <img class="element__photo" src="./images/tokyo.jpg" alt="Токио">
+        <p class="element__text">Токио</p>
+        <button class="element__like-button"></button>
+      </div>
+    </section>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <script src="./scripts/index.js"></script>
+  </div>
+</body>
+</html>
