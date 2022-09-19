@@ -11,12 +11,13 @@
     <header class="header">
       <img class="header__logo" src="./images/header-logo.svg" alt="лого">
     </header>
-    <div class="popup">
+    <div class="popup popup_opened">
       <form class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" id="popup__profile-name">
-        <input type="text" id="popup__profile-title">
-        <button class="popup__save-button">Сохранить</button>
+        <input class="popup__txtinput" type="text" id="popup__profile-name">
+        <input class="popup__txtinput" type="text" id="popup__profile-title">
+        <button class="popup__save-button" type="submit">Сохранить</button>
+        <button class="popup__close-button" type="button"></button>
       </form>
     </div>
     <section class="profile">
