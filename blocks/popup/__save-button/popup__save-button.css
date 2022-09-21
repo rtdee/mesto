@@ -11,6 +11,8 @@
   text-align: center;
   align-self: center;
   margin-top: 48px;
+  border-style: none;
+  cursor: pointer;
 }
 
 .popup__save-button:hover {
