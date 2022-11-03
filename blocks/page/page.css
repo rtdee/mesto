@@ -4,6 +4,7 @@
   color: #fff;
   font-family: 'Inter', Arial, sans-serif;
   max-width: 880px;
+  position: relative;
 }
 
 @media screen and (min-width: 0px) and (max-width: 900px) {

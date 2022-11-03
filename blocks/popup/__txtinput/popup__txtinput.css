@@ -11,20 +11,18 @@
   font-size: 14px;
   line-height: 17px;
   padding-bottom: 13px;
-  margin-top: 30px;
+  /*margin-top: 30px;*/
+  grid-row-start: 3;
 }
 
 .popup__txtinput:first-of-type {
-  margin-top: 54px;
+  /*margin-top: 54px;*/
+  grid-row-start: 2;
 }
 
 @media screen and (min-width: 0px) and (max-width: 900px) {
   .popup__txtinput {
     width: 238px;
+    align-self: start;
   }
-
-  .popup__txtinput:first-of-type {
-    margin-top: 75px;
-  }
-
 }

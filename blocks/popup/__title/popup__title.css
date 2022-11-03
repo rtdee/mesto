@@ -3,17 +3,19 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
-  padding-left: 36px;
-  padding-top: 34px;
   margin: 0;
+  grid-column-start: 2;
+  grid-row-start: 3;
+  color: black;
+  z-index: 1;
 }
 
 @media screen and (min-width: 0px) and (max-width: 900px) {
   .popup__title {
     font-size: 18px;
     line-height: 22px;
-    padding-top: 25px;
-    padding-left: 0;
-    align-self: center;
+    grid-column-start: 2;
+    grid-row-start: 4;
+    min-width: 240px;
   }
 }

@@ -10,9 +10,10 @@
   line-height: 22px;
   text-align: center;
   align-self: center;
-  margin-top: 48px;
+  /*margin-top: 48px;*/
   border-style: none;
   cursor: pointer;
+  grid-row-start: 4;
 }
 
 .popup__save-button:hover {
