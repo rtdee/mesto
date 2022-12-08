@@ -1,4 +1,4 @@
-.popup__txtinput {
+.popup__txt-input {
   width: 358px;
   height: 27px;
   box-sizing: border-box;
@@ -12,17 +12,30 @@
   line-height: 17px;
   padding-bottom: 13px;
   /*margin-top: 30px;*/
-  grid-row-start: 3;
 }
 
-.popup__txtinput:first-of-type {
-  /*margin-top: 54px;*/
-  grid-row-start: 2;
+.popup__txt-input::placeholder {
+  color: #C4C4C4
+}
+
+.popup__txt-input::-ms-input-placeholder {
+  color: #C4C4C4
+}
+
+.popup__txt-input::-moz-placeholder {
+  color: #C4C4C4
+}
+
+.popup__txt-input::-webkit-input-placeholder {
+  color: #C4C4C4
+}
+
+.popup__txt-input:last-of-type {
+  margin-top: 30px;
 }
 
 @media screen and (min-width: 0px) and (max-width: 900px) {
-  .popup__txtinput {
+  .popup__txt-input {
     width: 238px;
-    align-self: start;
   }
 }

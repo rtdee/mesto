@@ -1,17 +1,5 @@
 .popup_opened {
-  /*display: flex;
-  justify-content: center;*/
-  display: grid;
-  justify-content: center;
-  grid-template-rows: 155px 70px 65px 140px;
-  grid-template-columns: 36px 333px 67px;
-}
-
-@media screen and (min-width: 0px) and (max-width: 900px) {
-  .popup_opened {
-    /*grid-template-rows: 87px 62px 65px 140px;
-    grid-template-columns: 36px 159px 67px;*/
-    grid-template-rows: 87px 56px 7px 272px;
-    grid-template-columns: 22px 125px;
-  }
+  display: flex;
+  visibility: visible;
+  opacity: 1;
 }
