@@ -66,7 +66,7 @@ initialCards.forEach(function (elem) {
   renderCard(createCard (elem.name, elem.link));
 });
 
-function formSubmitHandler (evt) {
+function submitProfileForm (evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileTitle.textContent = profileTitleInput.value;
@@ -88,7 +88,7 @@ function syncProfileFormData() {
 
 popupProfileCloseButton.addEventListener('click', function() {closePopup (popupProfile)});
 popupProfileEditButton.addEventListener('click', function () {syncProfileFormData(); openPopup (popupProfile);});
-popupProfileForm.addEventListener('submit', formSubmitHandler);
+popupProfileForm.addEventListener('submit', submitProfileForm);
 popupAddPlaceAddButton.addEventListener('click', function() {openPopup (popupAddPlace)});
 popupAddPlaceCloseButton.addEventListener('click', function() {closePopup (popupAddPlace)});
 popupAddPlaceForm.addEventListener('submit', submitAddPlaceForm);
