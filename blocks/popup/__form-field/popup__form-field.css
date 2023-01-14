@@ -1,0 +1,4 @@
+.popup__form-field {
+  display: contents;
+  max-height: min-content;
+}

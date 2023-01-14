@@ -18,6 +18,41 @@ const photoLabel = document.querySelector('.photo-popup__label');
 const popupPhoto = document.querySelector('.photo-popup');
 const popupPhotoCloseButton = document.querySelector('.popup__close-button_location_photo-popup');
 
+function closePopup (popup) {
+  popup.classList.remove('popup_opened');
+  deleteEventListenerKeydownEsc (popup);
+}
+
+function setEventListenerKeydownEsc (popup) {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      closePopup (popup)
+    }
+  });
+}
+
+function deleteEventListenerKeydownEsc (popup) {
+  document.removeEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      closePopup (popup)
+    }
+  });
+}
+
+function setEventListenerClickOverlay (popup) {
+  popup.addEventListener('click', function (evt) {
+    if (evt.target === popup) {
+      closePopup (popup);
+    }
+  });
+}
+
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
+  setEventListenerKeydownEsc (popup);
+  setEventListenerClickOverlay (popup);
+}
+
 function createCard (placeName, photoLink) {
   const cardTemplate = document.querySelector('.card-template').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
@@ -71,14 +106,6 @@ function submitProfileForm (evt) {
   profileName.textContent = profileNameInput.value;
   profileTitle.textContent = profileTitleInput.value;
   closePopup (popupProfile);
-}
-
-function openPopup (popup) {
-  popup.classList.add('popup_opened');
-}
-
-function closePopup (popup) {
-  popup.classList.remove('popup_opened');
 }
 
 function syncProfileFormData() {
