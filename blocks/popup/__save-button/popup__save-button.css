@@ -10,7 +10,7 @@
   line-height: 22px;
   text-align: center;
   align-self: center;
-  margin-top: 48px;
+  margin-top: 10px;
   margin-bottom: 37px;
   border-style: none;
   cursor: pointer;
@@ -24,7 +24,7 @@
   .popup__save-button {
     width: 238px;
     height: 46px;
-    margin-top: 45px;
+    margin-top: 10px;
     margin-bottom: 25px;
     font-size: 14px;
     line-height: 17px;

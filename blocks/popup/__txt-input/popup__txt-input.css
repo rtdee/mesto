@@ -29,10 +29,6 @@
   color: #C4C4C4;
 }
 
-.popup__txt-input:last-of-type {
-  margin-top: 30px;
-}
-
 @media screen and (min-width: 0px) and (max-width: 900px) {
   .popup__txt-input {
     width: 238px;
