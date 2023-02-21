@@ -113,7 +113,7 @@ function validateForms(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach(function (formElement) {
     const validator = new FormValidator(formElement, config);
-    validator.enableValidation(config);
+    validator.enableValidation();
   });
 }
 
