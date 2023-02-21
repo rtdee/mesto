@@ -62,6 +62,6 @@ function enableValidation (config) {
   formList.forEach(function (formElement) {
     setEventListeners(formElement, config);
   });
-}    
+}
 
 enableValidation (validationConfig);
