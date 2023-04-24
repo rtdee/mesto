@@ -33,3 +33,19 @@ export const validationConfig = {
   inputErrorClass: 'popup__txt-input_type_error',
   errorClass: 'popup__error_visible'
 }
+
+export const elements = {
+  popupProfile: document.querySelector('.profile-popup'),
+  popupProfileEditButton: document.querySelector('.profile__edit-button'),
+  popupAddPlaceAddButton: document.querySelector('.profile__add-button'),
+  profileName: document.querySelector('.profile__name'),
+  profileTitle: document.querySelector('.profile__title'),
+  profileNameInput: document.querySelector('.popup__txt-input_type_name'),
+  profileTitleInput: document.querySelector('.popup__txt-input_type_title'),
+  popupProfileForm: document.querySelector('.profile-popup-form'),
+  photoSection: document.querySelector('.elements'),
+  popupAddPlace: document.querySelector('.add-place-popup'),
+  popupAddPlaceForm: document.querySelector('.add-place-popup__form'),
+  popupPhoto: document.querySelector('.photo-popup'),
+  cardTemplate: document.querySelector('.card-template').content
+}
