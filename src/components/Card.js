@@ -1,9 +1,16 @@
 class Card {
-  constructor({ data, handleCardClick }, cardSelector) {
-    this._name = data.placeName;
-    this._link = data.photoLink;
+  constructor({ data, handleCardClick }, cardSelector, handleApiPutLike, handleApiDeleteLike, confirmDelete, userInfo) {
+    this._name = data.name;
+    this._link = data.link;
+    this._likes = data.likes;
+    this._cardId = data._id;
+    this._ownerId = data.owner._id;
     this.cardTemplate = cardSelector;
     this.handleCardClick = handleCardClick;
+    this.handleApiPutLike = handleApiPutLike;
+    this.handleApiDeleteLike = handleApiDeleteLike;
+    this.confirmDelete = confirmDelete;
+    this.userInfo = userInfo;
   }
 
   _getTemplate() {
@@ -14,17 +21,28 @@ class Card {
   }
 
   _handleLikeClick() {
-    this._buttonLike.classList.toggle('element__like-button_active'); 
+    if (!this._buttonLike.classList.contains('element__like-button_active')) {
+      this._buttonLike.classList.add('element__like-button_active');
+      this.handleApiPutLike(this._cardId);
+      this._counterOfLikes.textContent = this._likes.push(undefined);
+    } else if (this._buttonLike.classList.contains('element__like-button_active')) {
+      this._buttonLike.classList.remove('element__like-button_active');
+      this.handleApiDeleteLike(this._cardId);
+      this._counterOfLikes.textContent = this._likes.length;
+    }
   }
 
-  
-  _deleteCard() {
-    this._newCard.remove();
+  _handleDeleteClick() {
+    this.confirmDelete(this._cardId);
+  }
+
+  deleteCard() {
+    this._newCard.remove
   }
 
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => this._handleLikeClick());
-    this._buttonDelete.addEventListener('click', () => this._deleteCard());
+    this._buttonDelete.addEventListener('click', () => this._handleDeleteClick());
     this._photo.addEventListener('click', () => {
       this.handleCardClick();
     });
@@ -37,6 +55,11 @@ class Card {
     this._photo.src = this._link;
     this._photo.alt = this._name;
     this._newCard.querySelector('.element__header').textContent = this._name;
+    this._counterOfLikes = this._newCard.querySelector('.element__like-counter');
+    this._counterOfLikes.textContent = this._likes.length;
+    if (this._ownerId !== this.userInfo.myId) {
+      this._buttonDelete.remove();
+    }
   }
 
   getCard() {
