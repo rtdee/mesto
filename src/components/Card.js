@@ -21,23 +21,17 @@ class Card {
   }
 
   _handleLikeClick() {
-    if (!this._buttonLike.classList.contains('element__like-button_active')) {
-      this._buttonLike.classList.add('element__like-button_active');
-      this.handleApiPutLike(this._cardId);
-      this._counterOfLikes.textContent = this._likes.push(undefined);
-    } else if (this._buttonLike.classList.contains('element__like-button_active')) {
+    if (this._likes.some(obj => obj._id === this.userInfo.myId)) {
       this._buttonLike.classList.remove('element__like-button_active');
       this.handleApiDeleteLike(this._cardId);
-      this._counterOfLikes.textContent = this._likes.length;
+    } else if (this._likes.every(obj => obj._id !== this.userInfo.myId)){
+      this._buttonLike.classList.add('element__like-button_active');
+      this.handleApiPutLike(this._cardId);
     }
   }
 
   _handleDeleteClick() {
     this.confirmDelete(this._cardId);
-  }
-
-  deleteCard() {
-    this._newCard.remove
   }
 
   _setEventListeners() {
@@ -60,6 +54,9 @@ class Card {
     if (this._ownerId !== this.userInfo.myId) {
       this._buttonDelete.remove();
     }
+    if (this._likes.some(obj => obj._id === this.userInfo.myId)) {
+      this._buttonLike.classList.add('element__like-button_active');
+    }  
   }
 
   getCard() {

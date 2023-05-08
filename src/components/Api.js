@@ -4,12 +4,21 @@ export default class Api {
     this.headers = options.headers;
   }
 
+  _checkStatus(res) {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
+  }
+
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
         headers: this.headers
       })
+      .then(this._checkStatus)
   }
-  
+
   postNewCard(data) {
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
@@ -19,6 +28,7 @@ export default class Api {
         link: data.link
       })
     })
+    .then(this._checkStatus)
   }
 
   deleteCard(cardId) {
@@ -26,12 +36,14 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers
     })
+    .then(this._checkStatus)
   }
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers
     })
+    .then(this._checkStatus)
   }
 
   patchUserInfo(data) {
@@ -43,6 +55,7 @@ export default class Api {
         about: data.about
       })
     })
+    .then(this._checkStatus)
   }
 
   putLike(cardId) {
@@ -50,6 +63,7 @@ export default class Api {
       method: 'PUT',
       headers: this.headers
     })
+    .then(this._checkStatus)
   }
 
   deleteLike(cardId) {
@@ -57,6 +71,7 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers
     })
+    .then(this._checkStatus)
   }
 
   patchAvatar(data) {
@@ -67,6 +82,7 @@ export default class Api {
         avatar: data.avatar
       })
     })
+    .then(this._checkStatus)
   }
 
 }

@@ -26,13 +26,6 @@ const userInfo = new UserInfo({
 function getUserInfo() {
   api.getUserInfo()
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .then((res) => {
       userInfo.setUserInfo({
         name: res.name,
         about: res.about,
@@ -60,22 +53,22 @@ const createCard = (data) => {
 
 const cardsSection = new Section({
     renderer: (data) => {
-      cardsSection.addItem(createCard(data));
+      cardsSection.appendItem(createCard(data));
     }
   }, elements.photoSection
 );
 
+const cardsSectionPost = new Section({
+  renderer: (data) => {
+    cardsSection.prependItem(createCard(data));
+  }
+}, elements.photoSection
+);
+
 function renderInitCards() {
+  getUserInfo();
   api.getInitialCards()
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .then((res) => {
-      console.log(res);
       cardsSection.renderItems(res);
     })
     .catch((err) => {
@@ -84,7 +77,6 @@ function renderInitCards() {
     })
 }
 renderInitCards();
-
 
 function handleProfileFormSubmit(formData) {
   popupWithFormUser.renderSaving(true);
@@ -95,13 +87,6 @@ function handleProfileFormSubmit(formData) {
   };
 
   api.patchUserInfo(data)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
     .then((res) => {
       getUserInfo();
       popupWithFormUser.close();
@@ -127,13 +112,6 @@ function handleAvatarUpdate(formData) {
   };
 
   api.patchAvatar(data)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
     .then((res) => {
       getUserInfo();
       popupWithFormAvatar.close();
@@ -161,14 +139,7 @@ function handleCardFormSubmit(formData) {
 
   api.postNewCard(data)
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .then((res) => {
-      cardsSection.renderItems([res]);
+      cardsSectionPost.renderItems([res]);
       popupWithFormPlace.close();
       cardFormValidator.toggleButtonState();
     })
@@ -177,7 +148,7 @@ function handleCardFormSubmit(formData) {
       alert(err);
     })
     .finally(() => {
-      popupWithFormUser.renderSaving(false);
+      popupWithFormPlace.renderSaving(false);
     })
 }
 
@@ -191,20 +162,13 @@ function fillProfileFormValues() {
   const userData = userInfo.getUserInfo();
   elements.profileNameInput.value = userData.name;
   elements.profileTitleInput.value = userData.about;
-  elements.profileAvatarInput.value = userData.avatar;
 }
 
 function putLike(cardId) {
   api.putLike(cardId)
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .then((res) => {
-      return res
+      cardsSection.clearSection();
+      renderInitCards();
     })
     .catch((err) => {
       console.log(`Ошибка: ${err}`);
@@ -215,14 +179,8 @@ function putLike(cardId) {
 function deleteLike(cardId) {
   api.deleteLike(cardId)
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .then((res) => {
-      return res.likes.length
+      cardsSection.clearSection();
+      renderInitCards();
     })
     .catch((err) => {
       console.log(`Ошибка: ${err}`);
@@ -238,13 +196,8 @@ function confirmDelete(cardId) {
 function handleCardDelete(cardId) {
   api.deleteCard(cardId)
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .then((res) => {
+      cardsSection.clearSection();
+      renderInitCards();
       popupWithConfirmation.close();
     })
     .catch((err) => {

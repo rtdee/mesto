@@ -10,7 +10,15 @@ export default class Section {
     });
   }
 
-  addItem(element) {
+  prependItem(element) {
     this.container.prepend(element);
+  }
+
+  appendItem(element) {
+    this.container.append(element);
+  }
+
+  clearSection() {
+    this.container.replaceChildren();
   }
 }
