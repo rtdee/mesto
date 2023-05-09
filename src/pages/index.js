@@ -33,6 +33,9 @@ function getUserInfo() {
         myId: res._id
       });
     })
+    .then(() => {
+      renderInitCards(); 
+    })
     .catch((err) => {
       console.log(`Ошибка: ${err}`);
       alert(err);
@@ -66,7 +69,6 @@ const cardsSectionPost = new Section({
 );
 
 function renderInitCards() {
-  getUserInfo();
   api.getInitialCards()
     .then((res) => {
       cardsSection.renderItems(res);
@@ -76,7 +78,6 @@ function renderInitCards() {
       alert(err);
     })
 }
-renderInitCards();
 
 function handleProfileFormSubmit(formData) {
   popupWithFormUser.renderSaving(true);
